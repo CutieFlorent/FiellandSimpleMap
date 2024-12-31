@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fielland统计数据</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: "Microsoft YaHei", sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        display: flex;
+        gap: 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .map-container {
+        flex: 3;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      .control-panel {
+        flex: 1;
+        min-width: 300px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        position: sticky;
+        top: 20px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+      }
+
+      #map {
+        width: 100%;
+        height: auto;
+      }
+
+      #map path {
+        transition: all 0.3s ease;
+        stroke: #fff;
+        stroke-width: 1px;
+      }
+
+      #map path:hover {
+        stroke: #000;
+        stroke-width: 2px;
+        filter: brightness(0.9);
+      }
+
+      .control-title {
+        margin: 0 0 15px 0;
+        color: #333;
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+      select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
+      .legend {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+        padding: 10px;
+        background: #f8f8f8;
+        border-radius: 4px;
+      }
+
+      .legend-gradient {
+        height: 20px;
+        flex-grow: 1;
+        margin: 0 10px;
+        border: 1px solid #ddd;
+      }
+
+      .legend-label {
+        font-size: 0.9em;
+        color: #666;
+        min-width: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="map-container">
+        <object id="map" data="map.svg" type="image/svg+xml"></object>
+      </div>
+      <div class="control-panel">
+        <div class="control-title">Fielland统计数据</div>
+        <select id="dataSelect">
+          <option value="density">人口密度</option>
+          <option value="population">人口总数</option>
+          <option value="area">面积</option>
+        </select>
+
+        <div class="legend">
+          <span class="legend-label" id="minValue">0</span>
+          <canvas class="legend-gradient" id="legend-gradient"></canvas>
+          <span class="legend-label" id="maxValue">100</span>
+        </div>
+
+        <div class="control-title">区域信息</div>
+        <div id="regionInfo">
+          <p>移动鼠标到地图上查看详细信息</p>
+        </div>
+      </div>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.4.0/chroma.min.js"></script>
+    <script src="region_data.js"></script>
+    <script>
+      // 颜色方案，可以根据需要调整
+
+      // 生成颜色
+      function getColor(value, min, max) {
+        var ratio = (value - min) / (max - min);
+        return chroma.scale("Spectral").domain([1, 0])(ratio).hex();
+      }
+
+      // 生成图例的渐变色带
+      function drawLegend(width, height) {
+        const canvas = document.getElementById("legend-gradient");
+        const ctx = canvas.getContext("2d");
+
+        // 使用 chroma.js 创建 Jet 渐变色
+        const colorScale = chroma.scale("Spectral").domain([1, 0]);
+
+        // 在图例条上绘制颜色渐变
+        const gradient = ctx.createLinearGradient(0, 0, width, 0);
+
+        // 为渐变添加颜色点
+        for (let i = 0; i <= width; i++) {
+          const ratio = i / width;
+          //console.log(ratio);
+          const color = colorScale(ratio).hex();
+          gradient.addColorStop(ratio, color);
+        }
+
+        // 填充整个图例条
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+      }
+
+      // 更新地图颜色
+      function updateMapColors() {
+        const dataType = document.getElementById("dataSelect").value;
+        const svgDoc = document.getElementById("map").contentDocument;
+        if (!svgDoc) return;
+
+        // 获取数据范围
+        const values = Object.values(regionData)
+          .map((d) => d[dataType])
+          .map((v) => parseFloat(v.replace(/,/g, "")));
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+
+        // 更新图例
+        document.getElementById("minValue").textContent = min.toLocaleString();
+        document.getElementById("maxValue").textContent = max.toLocaleString();
+        document.querySelector(".legend-gradient");
+        drawLegend(300, 200);
+
+        // 更新地图颜色
+        Object.entries(regionData).forEach(([regionId, data]) => {
+          const paths = svgDoc.querySelectorAll(`[id^="${regionId}"]`); // Select all paths with an id starting with regionId
+          if (paths) {
+            paths.forEach((path) => {
+              path.style.fill = getColor(
+                ...[parseFloat(data[dataType].replace(/,/g, "")), min, max].map(
+                  (v) => Math.log(v)
+                )
+              );
+            });
+          }
+        });
+      }
+
+      // 显示区域信息
+      function showRegionInfo(regionId) {
+        const data = regionData[regionId];
+        if (!data) return;
+
+        document.getElementById("regionInfo").innerHTML = `
+                <div style="line-height: 1.6;">
+                    <p><strong>${data.name || regionId}</strong></p>
+                    <p>人口：${data.population.toLocaleString()} 人</p>
+                    <p>面积：${data.area.toLocaleString()} km²</p>
+                    <p>人口密度：${data.density.toLocaleString()} 人/km²</p>
+                </div>
+            `;
+      }
+
+      // 初始化
+      document.getElementById("map").addEventListener("load", function () {
+        const svgDoc = this.contentDocument;
+
+        // 添加鼠标事件
+        svgDoc.querySelectorAll("path").forEach((path) => {
+          path.addEventListener("mouseover", function () {
+            showRegionInfo(this.id);
+          });
+        });
+
+        // 初始更新颜色
+        updateMapColors();
+      });
+
+      // 添加数据选择事件
+      document
+        .getElementById("dataSelect")
+        .addEventListener("change", updateMapColors);
+
+      ////////////
+      document.getElementById("map").addEventListener("load", function () {
+        const svgDoc = this.contentDocument;
+        const svg = d3.select(svgDoc.documentElement);
+
+        // 设置缩放行为
+        const zoom = d3
+          .zoom()
+          .scaleExtent([0.25, 4]) // 缩放范围
+          .on("zoom", (event) => {
+            svg.select("g").attr("transform", event.transform); // 应用变换
+          });
+
+        // 创建一个包含所有路径的 <g> 容器
+        const g = svg.append("g");
+
+        // 将所有路径移到 <g> 容器中
+        svg.selectAll("path").each(function () {
+          g.node().appendChild(this);
+        });
+
+        // 应用缩放行为到 SVG
+        svg.call(zoom);
+
+        const svgWidth = parseFloat(svg.attr("width"));
+        const svgHeight = parseFloat(svg.attr("height"));
+
+        // 初始缩放比例和平移值
+        const initialScale = 0.25;
+        const initialTranslateX = -100;
+        const initialTranslateY = -100;
+
+        // 设置初始变换
+        const initialTransform = d3.zoomIdentity
+          .translate(initialTranslateX, initialTranslateY)
+          .scale(initialScale);
+
+        svg.call(zoom.transform, initialTransform); // 应用初始变换
+
+        // updateMapColors();
+      });
+      /////////////
+    </script>
+  </body>
+</html>
