@@ -197,6 +197,7 @@
         document.getElementById("regionInfo").innerHTML = `
                 <div style="line-height: 1.6;">
                     <p><strong>${data.name || regionId}</strong></p>
+                    <p>藩国：${data.archla.toLocaleString()}</p>
                     <p>人口：${data.population.toLocaleString()} 人</p>
                     <p>面积：${data.area.toLocaleString()} km²</p>
                     <p>人口密度：${data.density.toLocaleString()} 人/km²</p>
