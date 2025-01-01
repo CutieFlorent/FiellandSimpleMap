@@ -2,15 +2,18 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Fielland统计数据</title>
+    <title>Fielland简易地图</title>
     <style>
       body {
         margin: 0;
         padding: 20px;
-        font-family: "Microsoft YaHei", sans-serif;
-        background-color: #f5f5f5;
-      }
 
+        background-color: #f5f5f5;
+        font-family: "Microsoft YaHei", sans-serif;
+        font-size: 1em;
+        font-weight: lighter;
+        line-height: 1.2;
+      }
       .container {
         display: flex;
         gap: 20px;
@@ -25,18 +28,31 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         padding: 20px;
       }
-
-      .control-panel {
+      .control-column {
         flex: 1;
-        min-width: 300px;
+        display: flex;
+        flex-direction: column; /* 垂直排列 */
+        gap: 15px; /* 间距 */
+        align-items: stretch; /* 确保子项宽度与父容器一致 */
+      }
+      .control-panel {
+        position: relative;
+        min-width: 250px;
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        padding: 20px;
+        padding: 15px;
         position: sticky;
-        top: 20px;
+        top: 15px;
         max-height: calc(100vh - 40px);
         overflow-y: auto;
+      }
+      .flag {
+        position: absolute; /* 绝对定位 */
+        top: 20px; /* 距离顶部 10px，可根据需要调整 */
+        right: 20px; /* 距离右侧 10px，可根据需要调整 */
+        width: 90px;
+        height: 60px;
       }
 
       #map {
@@ -57,10 +73,10 @@
       }
 
       .control-title {
-        margin: 0 0 15px 0;
-        color: #333;
         font-size: 1.1em;
         font-weight: bold;
+        margin: 0 0 10px 0;
+        color: #333;
       }
 
       select {
@@ -68,29 +84,11 @@
         padding: 8px;
         border: 1px solid #ddd;
         border-radius: 4px;
-        margin-bottom: 10px;
+        margin-bottom: 4px;
       }
-
-      .legend {
-        display: flex;
-        align-items: center;
-        margin: 15px 0;
-        padding: 10px;
-        background: #f8f8f8;
-        border-radius: 4px;
-      }
-
-      .legend-gradient {
-        height: 20px;
-        flex-grow: 1;
-        margin: 0 10px;
-        border: 1px solid #ddd;
-      }
-
-      .legend-label {
-        font-size: 0.9em;
-        color: #666;
-        min-width: 60px;
+      strong {
+        font-weight: normal;
+        font-size: 1.2em;
       }
     </style>
   </head>
@@ -99,29 +97,32 @@
       <div class="map-container">
         <object id="map" data="map.svg" type="image/svg+xml"></object>
       </div>
-      <div class="control-panel">
-        <div class="control-title">Fielland统计数据</div>
-        <select id="dataSelect">
-          <option value="density">人口密度</option>
-          <option value="population">人口总数</option>
-          <option value="area">面积</option>
-        </select>
-
-        <div class="legend">
-          <span class="legend-label" id="minValue">0</span>
-          <canvas class="legend-gradient" id="legend-gradient"></canvas>
-          <span class="legend-label" id="maxValue">100</span>
+      <div class="control-column">
+        <div class="control-panel">
+          <div class="control-title">Fielland统计数据</div>
+          <select id="dataSelect">
+            <option value="density">人口密度</option>
+            <option value="population">人口总数</option>
+            <option value="area">面积</option>
+          </select>
         </div>
-
-        <div class="control-title">区域信息</div>
-        <div id="regionInfo">
-          <p>移动鼠标到地图上查看详细信息</p>
+        <div class="control-panel">
+          <div class="control-title">区域信息</div>
+          <div id="regionInfo">
+            <p>移动鼠标到地图上查看详细信息</p>
+          </div>
+        </div>
+        <div class="control-panel">
+          <div id="stateInfo">
+            <p>移动鼠标到地图上查看详细信息</p>
+          </div>
         </div>
       </div>
     </div>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.4.0/chroma.min.js"></script>
     <script src="region_data.js"></script>
+    <script src="archla_data.js"></script>
     <script>
       // 颜色方案，可以根据需要调整
 
@@ -129,30 +130,6 @@
       function getColor(value, min, max) {
         var ratio = (value - min) / (max - min);
         return chroma.scale("Spectral").domain([1, 0])(ratio).hex();
-      }
-
-      // 生成图例的渐变色带
-      function drawLegend(width, height) {
-        const canvas = document.getElementById("legend-gradient");
-        const ctx = canvas.getContext("2d");
-
-        // 使用 chroma.js 创建 Jet 渐变色
-        const colorScale = chroma.scale("Spectral").domain([1, 0]);
-
-        // 在图例条上绘制颜色渐变
-        const gradient = ctx.createLinearGradient(0, 0, width, 0);
-
-        // 为渐变添加颜色点
-        for (let i = 0; i <= width; i++) {
-          const ratio = i / width;
-          //console.log(ratio);
-          const color = colorScale(ratio).hex();
-          gradient.addColorStop(ratio, color);
-        }
-
-        // 填充整个图例条
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
       }
 
       // 更新地图颜色
@@ -167,12 +144,6 @@
           .map((v) => parseFloat(v.replace(/,/g, "")));
         const min = Math.min(...values);
         const max = Math.max(...values);
-
-        // 更新图例
-        document.getElementById("minValue").textContent = min.toLocaleString();
-        document.getElementById("maxValue").textContent = max.toLocaleString();
-        document.querySelector(".legend-gradient");
-        drawLegend(300, 200);
 
         // 更新地图颜色
         Object.entries(regionData).forEach(([regionId, data]) => {
@@ -195,12 +166,31 @@
         if (!data) return;
 
         document.getElementById("regionInfo").innerHTML = `
-                <div style="line-height: 1.6;">
+                <div>
                     <p><strong>${data.name || regionId}</strong></p>
-                    <p>藩国：${data.archla.toLocaleString()}</p>
                     <p>人口：${data.population.toLocaleString()} 人</p>
                     <p>面积：${data.area.toLocaleString()} km²</p>
                     <p>人口密度：${data.density.toLocaleString()} 人/km²</p>
+                </div>
+            `;
+      }
+
+      function showStateInfo(regionId) {
+        const data = regionData[regionId];
+        if (!data) return;
+        const archla_data = archlaData[data.archla];
+
+        document.getElementById("stateInfo").innerHTML = `
+                <div>
+                    <p><strong>${data.archla || regionId}</strong></p>
+                    <img src="flags//${
+                      data.archla
+                    }.png" alt="Archla flag load error" class="flag">
+                    <p>人口：${archla_data.population.toLocaleString()} 人</p>
+                    <p>面积：${archla_data.area.toLocaleString()} km²</p>
+                    <p>人口密度：${archla_data.density
+                      .toFixed(2)
+                      .toLocaleString()} 人/km²</p>
                 </div>
             `;
       }
@@ -213,6 +203,7 @@
         svgDoc.querySelectorAll("path").forEach((path) => {
           path.addEventListener("mouseover", function () {
             showRegionInfo(this.id);
+            showStateInfo(this.id);
           });
         });
 
