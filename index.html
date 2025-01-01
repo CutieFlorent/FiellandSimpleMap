@@ -181,7 +181,7 @@
             paths.forEach((path) => {
               path.style.fill = getColor(
                 ...[parseFloat(data[dataType].replace(/,/g, "")), min, max].map(
-                  (v) => Math.log(v)
+                  (v) => Math.log(v + 5 * min)
                 )
               );
             });
