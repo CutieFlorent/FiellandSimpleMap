@@ -98,11 +98,12 @@
         <object id="map" data="map.svg" type="image/svg+xml"></object>
       </div>
       <div class="control-column">
+        <button class="language-switch" id="languageSwitch">English</button>
         <div class="control-panel">
           <div class="control-title">Fielland统计数据</div>
           <select id="dataSelect">
             <option value="density">人口密度</option>
-            <option value="population">人口总数</option>
+            <option value="population">人口</option>
             <option value="area">面积</option>
           </select>
         </div>
@@ -123,9 +124,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.4.0/chroma.min.js"></script>
     <script src="region_data.js"></script>
     <script src="archla_data.js"></script>
+    <script src="translate.js"></script>
     <script>
-      // 颜色方案，可以根据需要调整
-
       // 生成颜色
       function getColor(value, min, max) {
         var ratio = (value - min) / (max - min);
@@ -140,7 +140,8 @@
 
         // 获取数据范围
         const values = Object.values(regionData)
-          .map((d) => d[dataType]);
+          .map((d) => d[dataType])
+          .map((v) => v);
         const min = Math.min(...values);
         const max = Math.max(...values);
 
@@ -150,9 +151,7 @@
           if (paths) {
             paths.forEach((path) => {
               path.style.fill = getColor(
-                ...[data[dataType], min, max].map(
-                  (v) => Math.log(v + 5 * min)
-                )
+                ...[data[dataType], min, max].map((v) => Math.log(v + 5 * min))
               );
             });
           }
@@ -163,37 +162,43 @@
       function showRegionInfo(regionId) {
         const data = regionData[regionId];
         if (!data) return;
-
-        document.getElementById("regionInfo").innerHTML = `
-                <div>
-                    <p><strong>${data.name || regionId}</strong></p>
-                    <p>人口：${data.population.toLocaleString()} 人</p>
-                    <p>面积：${data.area.toLocaleString()} km²</p>
-                    <p>人口密度：${data.density.toLocaleString()} 人/km²</p>
-                </div>
-            `;
+        const text = `
+                     <div>
+                         <p><strong>${data.name || regionId}</strong></p>
+                         <p>人口：${data.population.toLocaleString()} 人</p>
+                         <p>面积：${data.area.toLocaleString()} km²</p>
+                         <p>人口密度：${data.density.toLocaleString()} 人/km²</p>
+                     </div>
+                 `;
+        document.getElementById("regionInfo").innerHTML = translateHTML(
+          text,
+          currentLanguage
+        );
       }
 
       function showStateInfo(regionId) {
         const data = regionData[regionId];
         if (!data) return;
         const archla_data = archlaData[data.archla];
-
-        document.getElementById("stateInfo").innerHTML = `
-                <div>
-                    <p><strong>${data.archla || regionId}</strong></p>
-                    <img src="flags//${
-                      data.archla
-                    }.png" alt="Archla flag load error" class="flag">
-                    <p>人口：${archla_data.population.toLocaleString()} 人</p>
-                    <p>面积：${archla_data.area.toLocaleString()} km²</p>
-                    <p>人口密度：${archla_data.density
-                      .toFixed(2)
-                      .toLocaleString()} 人/km²</p>
-                </div>
-            `;
+        const text = `
+                     <div>
+                         <p><strong>${data.archla || regionId}</strong></p>
+                         <img src="flags//${
+                           data.archla
+                         }.png" alt="Archla flag load error" class="flag">
+                         <p>人口：${archla_data.population.toLocaleString()} 人</p>
+                         <p>面积：${archla_data.area.toLocaleString()} km²</p>
+                         <p>人口密度：${archla_data.density
+                           .toFixed(2)
+                           .toLocaleString()} 人/km²</p>
+                     </div>
+                 `;
+        document.getElementById("stateInfo").innerHTML = translateHTML(
+          text,
+          currentLanguage
+        );
       }
-
+      let currentRegion = 84;
       // 初始化
       document.getElementById("map").addEventListener("load", function () {
         const svgDoc = this.contentDocument;
@@ -201,6 +206,7 @@
         // 添加鼠标事件
         svgDoc.querySelectorAll("path").forEach((path) => {
           path.addEventListener("mouseover", function () {
+            currentRegion = this.id;
             showRegionInfo(this.id);
             showStateInfo(this.id);
           });
