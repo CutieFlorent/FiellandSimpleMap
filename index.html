@@ -140,8 +140,7 @@
 
         // 获取数据范围
         const values = Object.values(regionData)
-          .map((d) => d[dataType])
-          .map((v) => parseFloat(v.replace(/,/g, "")));
+          .map((d) => d[dataType]);
         const min = Math.min(...values);
         const max = Math.max(...values);
 
@@ -151,7 +150,7 @@
           if (paths) {
             paths.forEach((path) => {
               path.style.fill = getColor(
-                ...[parseFloat(data[dataType].replace(/,/g, "")), min, max].map(
+                ...[data[dataType], min, max].map(
                   (v) => Math.log(v + 5 * min)
                 )
               );
