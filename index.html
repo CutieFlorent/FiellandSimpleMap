@@ -11,7 +11,7 @@
         background-color: #f5f5f5;
         font-family: "Microsoft YaHei", sans-serif;
         font-size: 1em;
-        font-weight: lighter;
+        font-weight: 300;
         line-height: 1.2;
       }
       .container {
@@ -57,7 +57,7 @@
 
       #map {
         width: 100%;
-        height: auto;
+        height: 100%;
       }
 
       #map path {
@@ -201,18 +201,38 @@
       let currentRegion = 84;
       // 初始化
       document.getElementById("map").addEventListener("load", function () {
-        const svgDoc = this.contentDocument;
+        const svg = this.contentDocument;
 
-        // 添加鼠标事件
-        svgDoc.querySelectorAll("path").forEach((path) => {
-          path.addEventListener("mouseover", function () {
-            currentRegion = this.id;
-            showRegionInfo(this.id);
-            showStateInfo(this.id);
+        function handlePath(path, isHover) {
+          const id = path.id;
+          const state = regionData[id].archla;
+          if (isHover) {
+            currentRegion = id;
+            showRegionInfo(id);
+            showStateInfo(id);
+          }
+
+          svg.querySelectorAll(`path[id="${id}"]`).forEach((p) => {
+            p.style.stroke = isHover
+              ? "#002040"
+              : p.dataset.origStroke || "none";
+            p.style.strokeWidth = isHover ? "2" : p.dataset.origWidth || "0";
           });
+          svg.querySelectorAll(`path[id="${state}"]`).forEach((p) => {
+            p.style.stroke = isHover
+              ? "#002040"
+              : p.dataset.origStroke || "none";
+            p.style.strokeWidth = isHover ? "5" : p.dataset.origWidth || "0";
+          });
+        }
+
+        svg.querySelectorAll("path[id^='fief']").forEach((path) => {
+          path.dataset.origStroke = path.style.stroke;
+          path.dataset.origWidth = path.style.strokeWidth;
+          path.onmouseover = () => handlePath(path, true);
+          path.onmouseout = () => handlePath(path, false);
         });
 
-        // 初始更新颜色
         updateMapColors();
       });
 
