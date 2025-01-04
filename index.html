@@ -3,7 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <title>Fielland简易地图</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <!-- 强制横屏显示 -->
+    <meta name="screen-orientation" content="landscape" />
+    <meta name="x5-orientation" content="landscape" />
+    <meta name="msapplication-orientation" content="landscape" />
     <style>
+      /* 重置默认样式 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #fff;
+      }
+
+      /* 强制横屏显示的样式 */
+      @media screen and (orientation: portrait) {
+        html {
+          transform: rotate(-90deg);
+          transform-origin: left top;
+          width: 100vh;
+          height: 100vw;
+          position: absolute;
+          top: 100%;
+          left: 0;
+        }
+      }
       body {
         margin: 0;
         padding: 20px;
@@ -12,7 +48,7 @@
         font-family: "Microsoft YaHei", sans-serif;
         font-size: 1em;
         font-weight: 300;
-        line-height: 1.2;
+        line-height: 1.5;
       }
       .container {
         display: flex;
