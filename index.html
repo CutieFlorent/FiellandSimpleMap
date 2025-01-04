@@ -38,24 +38,7 @@
         font-weight: 300;
         line-height: 1.5;
       }
-      @media (max-width: 768px) {
-        body {
-          font-size: 12px; /* 将根字体大小调整为 12px */
-        }
-      }
 
-      /* 强制横屏显示的样式 */
-      @media screen and (orientation: portrait) {
-        html {
-          transform: rotate(-90deg);
-          transform-origin: left top;
-          width: 100vh;
-          height: 100vw;
-          position: absolute;
-          top: 100%;
-          left: 0;
-        }
-      }
       .container {
         display: flex;
         gap: 20px;
@@ -132,6 +115,32 @@
       strong {
         font-weight: normal;
         font-size: 1.2em;
+      }
+      /*
+
+            修饰部分 */
+
+      @media (max-width: 768px) {
+        body {
+          font-size: 12px; /* 将根字体大小调整为 12px */
+        }
+        .container {
+          width: 90%;
+          max-width: 90%;
+        }
+      }
+
+      /* 强制横屏显示的样式 */
+      @media screen and (orientation: portrait) {
+        html {
+          transform: rotate(-90deg);
+          transform-origin: left top;
+          width: 100vh;
+          height: 100vw;
+          position: absolute;
+          top: 100%;
+          left: 0;
+        }
       }
     </style>
   </head>
