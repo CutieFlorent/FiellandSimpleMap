@@ -31,7 +31,7 @@
       /* 强制横屏显示的样式 */
       @media screen and (orientation: portrait) {
         html {
-          transform: rotate(-90deg) scale(0.75);
+          transform: rotate(-90deg);
           transform-origin: left top;
           width: 100vh;
           height: 100vw;
@@ -59,14 +59,14 @@
       }
 
       .map-container {
-        flex: 4;
+        flex: auto;
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         padding: 20px;
       }
       .control-column {
-        flex: 1;
+        width: 300px;
         display: flex;
         flex-direction: column; /* 垂直排列 */
         gap: 15px; /* 间距 */
