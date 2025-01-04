@@ -53,12 +53,13 @@
       .container {
         display: flex;
         gap: 20px;
-        max-width: 1400px;
+        height: 100%;
+        /* max-width: 1400px; */
         margin: 0 auto;
       }
 
       .map-container {
-        flex: 3;
+        flex: 4;
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -306,8 +307,8 @@
 
         // 初始缩放比例和平移值
         const initialScale = 0.25;
-        const initialTranslateX = -100;
-        const initialTranslateY = -100;
+        const initialTranslateX = -50;
+        const initialTranslateY = -50;
 
         // 设置初始变换
         const initialTransform = d3.zoomIdentity
