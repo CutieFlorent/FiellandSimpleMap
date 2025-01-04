@@ -31,7 +31,7 @@
       /* 强制横屏显示的样式 */
       @media screen and (orientation: portrait) {
         html {
-          transform: rotate(-90deg);
+          transform: rotate(-90deg) scale(0.75);
           transform-origin: left top;
           width: 100vh;
           height: 100vw;
@@ -308,7 +308,7 @@
         // 初始缩放比例和平移值
         const initialScale = 0.25;
         const initialTranslateX = -50;
-        const initialTranslateY = -50;
+        const initialTranslateY = -75;
 
         // 设置初始变换
         const initialTransform = d3.zoomIdentity
