@@ -125,9 +125,9 @@
           font-size: 12px; /* 将根字体大小调整为 12px */
         }
         .container {
-          width: 95%;
-          max-width: 95%;
           float: left;
+          width: 90%;
+          max-width: 90%;
         }
         /* .control-column {
           width: 200px;
@@ -156,6 +156,10 @@
   <body>
     <div class="container">
       <div class="map-container">
+        <div>
+          Total Population: 138,149,652 | Total Area: 3,401,584 km² | Population
+          Density: 40.61 / km²
+        </div>
         <object id="map" data="map.svg" type="image/svg+xml"></object>
       </div>
       <div class="control-column">
@@ -190,7 +194,24 @@
       // 生成颜色
       function getColor(value, min, max) {
         var ratio = (value - min) / (max - min);
-        return chroma.scale("Spectral").domain([1, 0])(ratio).hex();
+        return (
+          chroma
+            .scale("Spectral")
+            // .scale(["#0000ff", "#00ffff", "#00ff00", "#ffff00", "#ff0000"])
+            // .scale([
+            //   "#0f57fe",
+            //   "#16b7fe",
+            //   "#42ffd3",
+            //   "#90ff8d",
+            //   "#d6ff4f",
+            //   "#fed035",
+            //   "#fe8c3d",
+            //   "#f44a44",
+            //   "#a54c4c",
+            // ])
+            .domain([1, 0])(ratio)
+            .hex()
+        );
       }
 
       // 更新地图颜色
@@ -200,9 +221,7 @@
         if (!svgDoc) return;
 
         // 获取数据范围
-        const values = Object.values(regionData)
-          .map((d) => d[dataType])
-          .map((v) => v);
+        const values = Object.values(regionData).map((d) => d[dataType]);
         const min = Math.min(...values);
         const max = Math.max(...values);
 
