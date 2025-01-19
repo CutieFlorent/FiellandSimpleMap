@@ -951,7 +951,7 @@ const regionData = {
       "y": 1188
     },
     "archla": "Craftie",
-    "name": "Not Assigned",
+    "name": "Falaza",
     "population": 184550,
     "area": 1365,
     "density": "135.20"
@@ -2150,7 +2150,7 @@ const regionData = {
       "y": 815
     },
     "archla": "Desomi",
-    "name": "Not Assigned",
+    "name": "Harmple",
     "population": 34365,
     "area": 30891,
     "density": "1.11"
@@ -2282,7 +2282,7 @@ const regionData = {
       "y": 1348
     },
     "archla": "Salflat",
-    "name": "Not Assigned",
+    "name": "Alpass",
     "population": 202917,
     "area": 5512,
     "density": "36.81"
@@ -2635,9 +2635,9 @@ const regionData = {
     },
     "archla": "Mikalar",
     "name": "Ingefurt",
-    "population": 2495265,
+    "population": 2295265,
     "area": 3232,
-    "density": "772.05"
+    "density": "710.17"
   },
   "fief_241": {
     "center": {
@@ -2766,10 +2766,10 @@ const regionData = {
       "y": 1622
     },
     "archla": "Mikalar",
-    "name": "Not Assigned",
-    "population": 61800,
+    "name": "Misriel",
+    "population": 261800,
     "area": 6494,
-    "density": "9.52"
+    "density": "40.31"
   },
   "fief_253": {
     "center": {
@@ -2778,9 +2778,9 @@ const regionData = {
     },
     "archla": "Mikalar",
     "name": "Not Assigned",
-    "population": 34369,
+    "population": 134369,
     "area": 3218,
-    "density": "10.68"
+    "density": "41.76"
   },
   "fief_254": {
     "center": {
@@ -2855,9 +2855,9 @@ const regionData = {
     },
     "archla": "Mikalar",
     "name": "Flenine",
-    "population": 812556,
+    "population": 712556,
     "area": 4322,
-    "density": "188.00"
+    "density": "164.87"
   },
   "fief_261": {
     "center": {
@@ -2921,9 +2921,9 @@ const regionData = {
     },
     "archla": "Trofie",
     "name": "Flebre",
-    "population": 323620,
+    "population": 223620,
     "area": 3608,
-    "density": "89.70"
+    "density": "61.98"
   },
   "fief_267": {
     "center": {
@@ -2976,9 +2976,9 @@ const regionData = {
     },
     "archla": "Trofie",
     "name": "Delf",
-    "population": 232410,
+    "population": 132410,
     "area": 7225,
-    "density": "32.17"
+    "density": "18.33"
   },
   "fief_272": {
     "center": {
@@ -2997,7 +2997,7 @@ const regionData = {
       "y": 1879
     },
     "archla": "Trofie",
-    "name": "Not Assigned",
+    "name": "Surafura",
     "population": 187789,
     "area": 3075,
     "density": "61.07"
@@ -3031,9 +3031,9 @@ const regionData = {
     },
     "archla": "Trofie",
     "name": "Rinohana",
-    "population": 131595,
+    "population": 81595,
     "area": 6887,
-    "density": "19.11"
+    "density": "11.85"
   },
   "fief_277": {
     "center": {
@@ -3042,9 +3042,9 @@ const regionData = {
     },
     "archla": "Trofie",
     "name": "Radianca",
-    "population": 50597,
+    "population": 150597,
     "area": 5905,
-    "density": "8.57"
+    "density": "25.50"
   },
   "fief_278": {
     "center": {
@@ -3085,7 +3085,7 @@ const regionData = {
       "y": 1703
     },
     "archla": "Trofie",
-    "name": "Not Assigned",
+    "name": "Cheriléo",
     "population": 228576,
     "area": 9725,
     "density": "23.50"
@@ -3119,9 +3119,9 @@ const regionData = {
     },
     "archla": "Trofie",
     "name": "Not Assigned",
-    "population": 31483,
+    "population": 131483,
     "area": 6816,
-    "density": "4.62"
+    "density": "19.29"
   },
   "fief_285": {
     "center": {
@@ -3140,10 +3140,10 @@ const regionData = {
       "y": 1739
     },
     "archla": "Trofie",
-    "name": "Not Assigned",
-    "population": 221066,
+    "name": "Rileat",
+    "population": 171066,
     "area": 4645,
-    "density": "47.59"
+    "density": "36.83"
   },
   "fief_287": {
     "center": {
@@ -3152,9 +3152,9 @@ const regionData = {
     },
     "archla": "Trofie",
     "name": "Not Assigned",
-    "population": 42904,
+    "population": 142904,
     "area": 7025,
-    "density": "6.11"
+    "density": "20.34"
   },
   "fief_288": {
     "center": {
@@ -4163,7 +4163,7 @@ const regionData = {
       "y": 1553
     },
     "archla": "Terminar",
-    "name": "Not Assigned",
+    "name": "Shilan",
     "population": 49449,
     "area": 5511,
     "density": "8.97"
@@ -4537,7 +4537,7 @@ const regionData = {
       "y": 1848
     },
     "archla": "Neterine",
-    "name": "Not Assigned",
+    "name": "Madomka",
     "population": 171784,
     "area": 5792,
     "density": "29.66"
@@ -5274,7 +5274,7 @@ const regionData = {
       "y": 2489
     },
     "archla": "Silitie",
-    "name": "Not Assigned",
+    "name": "Onatol",
     "population": 141096,
     "area": 14664,
     "density": "9.62"
@@ -5362,7 +5362,7 @@ const regionData = {
       "y": 2385
     },
     "archla": "Silitie",
-    "name": "Not Assigned",
+    "name": "Kofréwil",
     "population": 177632,
     "area": 18360,
     "density": "9.67"
@@ -5835,7 +5835,7 @@ const regionData = {
       "y": 2050
     },
     "archla": "Lateni",
-    "name": "Not Assigned",
+    "name": "Swadcher",
     "population": 162873,
     "area": 4961,
     "density": "32.83"
