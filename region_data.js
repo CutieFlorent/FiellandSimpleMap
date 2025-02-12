@@ -797,7 +797,7 @@ const regionData = {
       "y": 1169
     },
     "archla": "Craftie",
-    "name": "Not Assigned",
+    "name": "Meshfurt",
     "population": 127031,
     "area": 4314,
     "density": "29.45"
@@ -852,7 +852,7 @@ const regionData = {
       "y": 1093
     },
     "archla": "Craftie",
-    "name": "Not Assigned",
+    "name": "Coryfurt",
     "population": 164703,
     "area": 2539,
     "density": "64.87"
@@ -874,7 +874,7 @@ const regionData = {
       "y": 1070
     },
     "archla": "Craftie",
-    "name": "Not Assigned",
+    "name": "Sherple",
     "population": 190415,
     "area": 3269,
     "density": "58.25"
@@ -3547,7 +3547,7 @@ const regionData = {
       "y": 1629
     },
     "archla": "Skelean",
-    "name": "Not Assigned",
+    "name": "Argenit",
     "population": 185335,
     "area": 4930,
     "density": "37.59"
@@ -3635,7 +3635,7 @@ const regionData = {
       "y": 1656
     },
     "archla": "Skelean",
-    "name": "Not Assigned",
+    "name": "Trolan",
     "population": 191979,
     "area": 1944,
     "density": "98.75"
@@ -4339,7 +4339,7 @@ const regionData = {
       "y": 1747
     },
     "archla": "Terminar",
-    "name": "Not Assigned",
+    "name": "Mikan",
     "population": 117535,
     "area": 3692,
     "density": "31.84"
@@ -4680,7 +4680,7 @@ const regionData = {
       "y": 2190
     },
     "archla": "Neterine",
-    "name": "Not Assigned",
+    "name": "Rocloft",
     "population": 44892,
     "area": 3000,
     "density": "14.96"
@@ -4823,7 +4823,7 @@ const regionData = {
       "y": 393
     },
     "archla": "Fregen",
-    "name": "Not Assigned",
+    "name": "Liþalkva",
     "population": 24022,
     "area": 3199,
     "density": "7.51"
@@ -4977,7 +4977,7 @@ const regionData = {
       "y": 1755
     },
     "archla": "Creepeat",
-    "name": "Not Assigned",
+    "name": "Falsura",
     "population": 66731,
     "area": 2802,
     "density": "23.82"
@@ -5659,7 +5659,7 @@ const regionData = {
       "y": 2197
     },
     "archla": "Felzet",
-    "name": "Not Assigned",
+    "name": "Mixtran",
     "population": 82927,
     "area": 4359,
     "density": "19.02"
@@ -5791,7 +5791,7 @@ const regionData = {
       "y": 1916
     },
     "archla": "Lateni",
-    "name": "Higana",
+    "name": "Hikanel",
     "population": 77996,
     "area": 7987,
     "density": "9.77"
@@ -5912,7 +5912,7 @@ const regionData = {
       "y": 2240
     },
     "archla": "Lateni",
-    "name": "Not Assigned",
+    "name": "Kamia",
     "population": 141318,
     "area": 2608,
     "density": "54.19"
@@ -5956,7 +5956,7 @@ const regionData = {
       "y": 2072
     },
     "archla": "Lateni",
-    "name": "Not Assigned",
+    "name": "Maiceni",
     "population": 130206,
     "area": 3820,
     "density": "34.09"
@@ -5978,7 +5978,7 @@ const regionData = {
       "y": 1955
     },
     "archla": "Lateni",
-    "name": "Not Assigned",
+    "name": "Cretera",
     "population": 144698,
     "area": 9111,
     "density": "15.88"
