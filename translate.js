@@ -2,9 +2,12 @@ const translationMap = {
   Fielland统计数据: "Statistics of Fielland",
   人: " ",
   人口: "Population",
-  人口数量: "Population Amount",
-  人口密度: "Population Density",
+  总人口: "Total Population",
+  人口数量: "Pop. Amount",
+  人口密度: "Pop. Density",
+  总人口密度: `Total Pop. Density`,
   面积: "Area",
+  总面积: "Total Area",
   区域信息: "Regional Info",
 };
 
@@ -60,6 +63,7 @@ function translatePage(targetLanguage) {
   }
   showRegionInfo(currentRegion);
   showStateInfo(currentRegion);
+  showTotalInfo();
 }
 
 // 按钮点击事件，切换语言

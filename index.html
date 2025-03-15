@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Fielland简易地图</title>
+    <title>Fielland地图 - SCP分部</title>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -25,18 +25,20 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        background: #fff;
+        background: #000;
+        color: #fff;
       }
 
       body {
         margin: 0;
         padding: 20px;
-
-        background-color: #f5f5f5;
+        background-color: #0e0e0e;
         font-family: "Microsoft YaHei", sans-serif;
         font-size: 1em;
         font-weight: 250;
         line-height: 1.5;
+        /* font-stretch: condensed; */
+        letter-spacing: -0.5px;
       }
 
       .container {
@@ -49,9 +51,10 @@
 
       .map-container {
         flex: auto;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: #1a1a1a;
+        border: 2px solid #666;
+        border-radius: 0;
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
         padding: 20px;
       }
       .control-column {
@@ -64,14 +67,34 @@
       .control-panel {
         position: relative;
         min-width: auto;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        border: 2px solid #666;
+        border-radius: 0;
         padding: 15px;
         position: sticky;
         top: 15px;
         max-height: calc(100vh - 40px);
         overflow-y: auto;
+        color: #000;
+      }
+
+      /* 添加文字压缩样式 */
+      /* .control-panel p {
+        /* .control-panel p,
+      .control-panel select,
+      .control-title { */
+      /* transform: scaleX(0.85);
+        transform-origin: left; */
+      /* } */
+
+      /* 确保旗帜不受压缩影响 */
+      .flag {
+        transform: none;
+      }
+
+      /* 修改选择框样式以适应压缩后的宽度 */
+      select {
+        width: 117.65%; /* 补偿压缩造成的宽度减少 (100/0.85) */
       }
       .flag {
         position: absolute; /* 绝对定位 */
@@ -88,14 +111,68 @@
 
       #map path {
         transition: all 0.3s ease;
-        stroke: #fff;
+        stroke: #333;
         stroke-width: 1px;
       }
 
       #map path:hover {
-        stroke: #000;
+        stroke: #ff0000;
         stroke-width: 2px;
-        filter: brightness(0.9);
+        filter: brightness(1.2);
+      }
+
+      .control-title {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin: 0 0 10px 0;
+        color: #ff0000;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 1px solid #666;
+        padding-bottom: 5px;
+      }
+
+      select {
+        width: 100%;
+        padding: 8px;
+        background: #000;
+        color: #fff;
+        border: 1px solid #666;
+        border-radius: 0;
+        margin-bottom: 4px;
+      }
+
+      select:focus {
+        outline: none;
+        border-color: #ff0000;
+      }
+
+      .language-switch {
+        background: #1a1a1a;
+        color: #fff;
+        border: 2px solid #666;
+        padding: 8px 15px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .language-switch:hover {
+        background: #ff0000;
+        color: #fff;
+        border-color: #ff0000;
+      }
+
+      #map path {
+        transition: all 0.3s ease;
+        stroke: #333;
+        stroke-width: 1px;
+      }
+
+      #map path:hover {
+        stroke: #ff0000;
+        stroke-width: 2px;
+        filter: brightness(1.2);
       }
 
       .control-title {
@@ -179,9 +256,9 @@
             <p>移动鼠标到地图上查看详细信息</p>
           </div>
         </div>
-        <div>
-          Total Population: 138,149,652<br />Total Area: 3,401,584 km²<br />Population
-          Density: 40.61 / km²
+        <div id="totalInfo">
+          总人口: 138,149,652<br />总面积: 3,401,584 km²<br />人口密度: 40.61
+          /km²
         </div>
       </div>
     </div>
@@ -194,24 +271,7 @@
       // 生成颜色
       function getColor(value, min, max) {
         var ratio = (value - min) / (max - min);
-        return (
-          chroma
-            .scale("Spectral")
-            // .scale(["#0000ff", "#00ffff", "#00ff00", "#ffff00", "#ff0000"])
-            // .scale([
-            //   "#0f57fe",
-            //   "#16b7fe",
-            //   "#42ffd3",
-            //   "#90ff8d",
-            //   "#d6ff4f",
-            //   "#fed035",
-            //   "#fe8c3d",
-            //   "#f44a44",
-            //   "#a54c4c",
-            // ])
-            .domain([1, 0])(ratio)
-            .hex()
-        );
+        return chroma.scale("Spectral").domain([1, 0])(ratio).hex();
       }
 
       // 更新地图颜色
@@ -278,6 +338,14 @@
           currentLanguage
         );
       }
+      function showTotalInfo() {
+        const text =
+          "总人口: 138,149,652<br />总面积: 3,401,584 km²<br />总人口密度: 40.61人/km²";
+        document.getElementById("totalInfo").innerHTML = translateHTML(
+          text,
+          currentLanguage
+        );
+      }
       let currentRegion = 84;
       // 初始化
       document.getElementById("map").addEventListener("load", function () {
@@ -304,6 +372,21 @@
               : p.dataset.origStroke || "none";
             p.style.strokeWidth = isHover ? "5" : p.dataset.origWidth || "0";
           });
+          // const labelSize = 0.5;
+          // svg
+          //   .append("text")
+          //   .attr("id", `label-${id}`)
+          //   .attr("x", regionData[id].center.x)
+          //   .attr("y", regionData[id].center.y)
+          //   .attr("font-size", `${labelSize * Math.sqrt(fiefInfo[id].area)}px`)
+          //   .attr("text-anchor", "middle") // 文字居中对齐
+          //   .text(regionData[id].name)
+          //   .style("fill", "white")
+          //   .style("visibility", "hidden"); // 默认隐藏
+
+          // svg.querySelectorAll(`path[id="label-${id}"]`).forEach((p) => {
+          //   p.style.style("visibility", isHover ? "visible" : "hidden");
+          // });
         }
 
         svg.querySelectorAll("path[id^='fief']").forEach((path) => {
