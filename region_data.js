@@ -27,7 +27,7 @@ const regionData = {
       "y": 429
     },
     "archla": "Nitade",
-    "name": "Not Assigned",
+    "name": "Cloclo",
     "population": 108509,
     "area": 10804,
     "density": "10.04"
@@ -115,7 +115,7 @@ const regionData = {
       "y": 683
     },
     "archla": "Nitade",
-    "name": "Not Assigned",
+    "name": "Goψe",
     "population": 125097,
     "area": 5245,
     "density": "23.85"
@@ -126,7 +126,7 @@ const regionData = {
       "y": 753
     },
     "archla": "Nitade",
-    "name": "Not Assigned",
+    "name": "Negen",
     "population": 143307,
     "area": 6427,
     "density": "22.30"
@@ -203,7 +203,7 @@ const regionData = {
       "y": 908
     },
     "archla": "Nitade",
-    "name": "Not Assigned",
+    "name": "Alen",
     "population": 193380,
     "area": 4876,
     "density": "39.66"
@@ -445,7 +445,7 @@ const regionData = {
       "y": 896
     },
     "archla": "Stonade",
-    "name": "Not Assigned",
+    "name": "Viory",
     "population": 140926,
     "area": 3793,
     "density": "37.15"
@@ -599,7 +599,7 @@ const regionData = {
       "y": 1121
     },
     "archla": "Stonade",
-    "name": "Not Assigned",
+    "name": "Linealge",
     "population": 187241,
     "area": 2691,
     "density": "69.58"
@@ -632,7 +632,7 @@ const regionData = {
       "y": 1128
     },
     "archla": "Stonade",
-    "name": "Not Assigned",
+    "name": "Ganier",
     "population": 172799,
     "area": 4026,
     "density": "42.92"
@@ -676,7 +676,7 @@ const regionData = {
       "y": 1020
     },
     "archla": "Stonade",
-    "name": "Cralville",
+    "name": "Crelville",
     "population": 218453,
     "area": 2799,
     "density": "78.05"
@@ -709,7 +709,7 @@ const regionData = {
       "y": 1076
     },
     "archla": "Craftie",
-    "name": "Not Assigned",
+    "name": "Licolf",
     "population": 149334,
     "area": 2766,
     "density": "53.99"
@@ -819,7 +819,7 @@ const regionData = {
       "y": 1266
     },
     "archla": "Craftie",
-    "name": "Not Assigned",
+    "name": "Nonbai",
     "population": 100082,
     "area": 7121,
     "density": "14.05"
@@ -885,7 +885,7 @@ const regionData = {
       "y": 1134
     },
     "archla": "Craftie",
-    "name": "Licolf",
+    "name": "Sarales",
     "population": 343152,
     "area": 2521,
     "density": "136.12"
@@ -962,7 +962,7 @@ const regionData = {
       "y": 1221
     },
     "archla": "Craftie",
-    "name": "Not Assigned",
+    "name": "Chekan",
     "population": 164201,
     "area": 2012,
     "density": "81.61"
@@ -1160,7 +1160,7 @@ const regionData = {
       "y": 1282
     },
     "archla": "Foretane",
-    "name": "Skyniréve",
+    "name": "Skeniréve",
     "population": 238947,
     "area": 2685,
     "density": "88.99"
@@ -1369,7 +1369,7 @@ const regionData = {
       "y": 1347
     },
     "archla": "Shamet",
-    "name": "Not Assigned",
+    "name": "Faide",
     "population": 164923,
     "area": 5688,
     "density": "28.99"
@@ -1545,7 +1545,7 @@ const regionData = {
       "y": 1518
     },
     "archla": "Shamet",
-    "name": "Faide",
+    "name": "Autisen",
     "population": 700211,
     "area": 826,
     "density": "847.71"
@@ -1787,7 +1787,7 @@ const regionData = {
       "y": 1914
     },
     "archla": "Abresan",
-    "name": "Not Assigned",
+    "name": "Gingai",
     "population": 190254,
     "area": 3466,
     "density": "54.89"
@@ -2249,7 +2249,7 @@ const regionData = {
       "y": 1471
     },
     "archla": "Salflat",
-    "name": "Not Assigned",
+    "name": "Dispeer",
     "population": 148779,
     "area": 6541,
     "density": "22.75"
@@ -2348,7 +2348,7 @@ const regionData = {
       "y": 1194
     },
     "archla": "Richarm",
-    "name": "Not Assigned",
+    "name": "Maimai",
     "population": 191614,
     "area": 15523,
     "density": "12.34"
@@ -2381,7 +2381,7 @@ const regionData = {
       "y": 1185
     },
     "archla": "Richarm",
-    "name": "Not Assigned",
+    "name": "Intel",
     "population": 156618,
     "area": 7147,
     "density": "21.91"
@@ -2403,7 +2403,7 @@ const regionData = {
       "y": 1239
     },
     "archla": "Richarm",
-    "name": "Not Assigned",
+    "name": "Invidae",
     "population": 179098,
     "area": 4640,
     "density": "38.60"
@@ -2524,7 +2524,7 @@ const regionData = {
       "y": 1359
     },
     "archla": "Richarm",
-    "name": "Not Assigned",
+    "name": "Adofe",
     "population": 154270,
     "area": 2423,
     "density": "63.67"
@@ -3646,7 +3646,7 @@ const regionData = {
       "y": 1696
     },
     "archla": "Skelean",
-    "name": "Not Assigned",
+    "name": "Gaque",
     "population": 101049,
     "area": 1989,
     "density": "50.80"
@@ -3734,7 +3734,7 @@ const regionData = {
       "y": 1708
     },
     "archla": "Skelean",
-    "name": "Not Assigned",
+    "name": "Toya",
     "population": 223697,
     "area": 2406,
     "density": "92.97"
@@ -3745,7 +3745,7 @@ const regionData = {
       "y": 1760
     },
     "archla": "Skelean",
-    "name": "Not Assigned",
+    "name": "Kachi",
     "population": 112359,
     "area": 4268,
     "density": "26.33"
@@ -3943,7 +3943,7 @@ const regionData = {
       "y": 1858
     },
     "archla": "Austrene",
-    "name": "Furken",
+    "name": "Visuke",
     "population": 488427,
     "area": 3744,
     "density": "130.46"
@@ -3954,7 +3954,7 @@ const regionData = {
       "y": 1882
     },
     "archla": "Austrene",
-    "name": "Not Assigned",
+    "name": "Furken",
     "population": 69615,
     "area": 2685,
     "density": "25.93"
@@ -4174,7 +4174,7 @@ const regionData = {
       "y": 1637
     },
     "archla": "Terminar",
-    "name": "Celese",
+    "name": "Celence",
     "population": 198467,
     "area": 7323,
     "density": "27.10"
@@ -4229,7 +4229,7 @@ const regionData = {
       "y": 1791
     },
     "archla": "Terminar",
-    "name": "Not Assigned",
+    "name": "Demilan",
     "population": 188789,
     "area": 3772,
     "density": "50.05"
@@ -4361,7 +4361,7 @@ const regionData = {
       "y": 1811
     },
     "archla": "Terminar",
-    "name": "Not Assigned",
+    "name": "Suynas",
     "population": 199467,
     "area": 4077,
     "density": "48.92"
@@ -4889,7 +4889,7 @@ const regionData = {
       "y": 800
     },
     "archla": "Fregen",
-    "name": "Not Assigned",
+    "name": "Tungal",
     "population": 68127,
     "area": 4694,
     "density": "14.51"
@@ -4923,9 +4923,9 @@ const regionData = {
     },
     "archla": "Channet",
     "name": "Not Assigned",
-    "population": 112758,
+    "population": 312758,
     "area": 5852,
-    "density": "19.27"
+    "density": "53.44"
   },
   "fief_449": {
     "center": {
@@ -4934,9 +4934,9 @@ const regionData = {
     },
     "archla": "Channet",
     "name": "Miller",
-    "population": 792826,
+    "population": 592826,
     "area": 3903,
-    "density": "203.13"
+    "density": "151.89"
   },
   "fief_450": {
     "center": {
@@ -5164,7 +5164,7 @@ const regionData = {
       "y": 1838
     },
     "archla": "Creepeat",
-    "name": "Not Assigned",
+    "name": "Deepsic",
     "population": 178152,
     "area": 3312,
     "density": "53.79"
@@ -5374,9 +5374,9 @@ const regionData = {
     },
     "archla": "Silitie",
     "name": "Endefel",
-    "population": 252969,
+    "population": 242969,
     "area": 14232,
-    "density": "17.77"
+    "density": "17.07"
   },
   "fief_490": {
     "center": {
@@ -5385,9 +5385,9 @@ const regionData = {
     },
     "archla": "Silitie",
     "name": "Not Assigned",
-    "population": 11383,
+    "population": 21383,
     "area": 12036,
-    "density": "0.95"
+    "density": "1.78"
   },
   "fief_491": {
     "center": {
