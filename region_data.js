@@ -5681,7 +5681,7 @@ const regionData = {
       "y": 2576
     },
     "archla": "Felzet",
-    "name": "Not Assigned",
+    "name": "Assghar",
     "population": 6011,
     "area": 2720,
     "density": "2.21"
