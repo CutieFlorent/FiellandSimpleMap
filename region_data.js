@@ -5286,9 +5286,9 @@ const regionData = {
     },
     "archla": "Silitie",
     "name": "Gamera",
-    "population": 584264,
+    "population": 384264,
     "area": 14295,
-    "density": "40.87"
+    "density": "26.88"
   },
   "fief_482": {
     "center": {
@@ -5297,9 +5297,9 @@ const regionData = {
     },
     "archla": "Silitie",
     "name": "Not Assigned",
-    "population": 84264,
+    "population": 184264,
     "area": 31323,
-    "density": "2.69"
+    "density": "5.88"
   },
   "fief_483": {
     "center": {
@@ -5341,9 +5341,9 @@ const regionData = {
     },
     "archla": "Silitie",
     "name": "Not Assigned",
-    "population": 35257,
+    "population": 85257,
     "area": 29733,
-    "density": "1.19"
+    "density": "2.87"
   },
   "fief_487": {
     "center": {
@@ -5385,9 +5385,9 @@ const regionData = {
     },
     "archla": "Silitie",
     "name": "Not Assigned",
-    "population": 21383,
+    "population": 71383,
     "area": 12036,
-    "density": "1.78"
+    "density": "5.93"
   },
   "fief_491": {
     "center": {
