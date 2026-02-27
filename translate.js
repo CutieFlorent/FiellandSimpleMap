@@ -1,9 +1,10 @@
 const translationMap = {
   Fielland统计数据: "Statistics of Fielland",
+  "/km²": "/ km²",
   人: " ",
-  人口: "Population",
+  人口: "Pop.",
   总人口: "Total Population",
-  人口数量: "Pop. Amount",
+  人口数量: "Population",
   人口密度: "Pop. Density",
   总人口密度: `Total Pop. Density`,
   面积: "Area",
