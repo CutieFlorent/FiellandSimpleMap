@@ -82,7 +82,7 @@ const regionData = {
       "y": 556
     },
     "archla": "Nitade",
-    "name": "Not Assigned",
+    "name": "Zexple",
     "population": 72821,
     "area": 7525,
     "density": "9.68"
@@ -214,7 +214,7 @@ const regionData = {
       "y": 885
     },
     "archla": "Nitade",
-    "name": "Not Assigned",
+    "name": "Mushre",
     "population": 90634,
     "area": 4375,
     "density": "20.72"
@@ -324,7 +324,7 @@ const regionData = {
       "y": 789
     },
     "archla": "Nitade",
-    "name": "Not Assigned",
+    "name": "Gerlimot",
     "population": 59410,
     "area": 10149,
     "density": "5.85"
@@ -1677,7 +1677,7 @@ const regionData = {
       "y": 1532
     },
     "archla": "Shamet",
-    "name": "Not Assigned",
+    "name": "Partnar",
     "population": 129564,
     "area": 1542,
     "density": "84.02"
@@ -1776,7 +1776,7 @@ const regionData = {
       "y": 1850
     },
     "archla": "Abresan",
-    "name": "Not Assigned",
+    "name": "Mitena",
     "population": 115997,
     "area": 3581,
     "density": "32.39"
@@ -1842,7 +1842,7 @@ const regionData = {
       "y": 821
     },
     "archla": "Haifalite",
-    "name": "Discot",
+    "name": "Not Assigned",
     "population": 78276,
     "area": 11396,
     "density": "6.87"
@@ -1897,7 +1897,7 @@ const regionData = {
       "y": 1076
     },
     "archla": "Haifalite",
-    "name": "Not Assigned",
+    "name": "Frendlene",
     "population": 51580,
     "area": 13098,
     "density": "3.94"
@@ -2106,7 +2106,7 @@ const regionData = {
       "y": 943
     },
     "archla": "Desomi",
-    "name": "Stracville",
+    "name": "Kangei",
     "population": 134287,
     "area": 8133,
     "density": "16.51"
@@ -2128,7 +2128,7 @@ const regionData = {
       "y": 978
     },
     "archla": "Desomi",
-    "name": "Not Assigned",
+    "name": "Stracville",
     "population": 72013,
     "area": 23336,
     "density": "3.09"
@@ -2491,7 +2491,7 @@ const regionData = {
       "y": 1517
     },
     "archla": "Richarm",
-    "name": "Not Assigned",
+    "name": "Melanko",
     "population": 136698,
     "area": 4420,
     "density": "30.93"
@@ -2755,7 +2755,7 @@ const regionData = {
       "y": 1621
     },
     "archla": "Mikalar",
-    "name": "Not Assigned",
+    "name": "Simete",
     "population": 110067,
     "area": 6038,
     "density": "18.23"
@@ -2799,7 +2799,7 @@ const regionData = {
       "y": 1689
     },
     "archla": "Mikalar",
-    "name": "Not Assigned",
+    "name": "Illuyo",
     "population": 66362,
     "area": 4436,
     "density": "14.96"
@@ -2931,7 +2931,7 @@ const regionData = {
       "y": 1999
     },
     "archla": "Trofie",
-    "name": "Not Assigned",
+    "name": "                                                     ",
     "population": 115796,
     "area": 5167,
     "density": "22.41"
@@ -3360,7 +3360,7 @@ const regionData = {
       "y": 1274
     },
     "archla": "Heelean",
-    "name": "Tunalene",
+    "name": "Tunnelene",
     "population": 83905,
     "area": 4108,
     "density": "20.42"
@@ -3470,7 +3470,7 @@ const regionData = {
       "y": 1488
     },
     "archla": "Raidet",
-    "name": "Not Assigned",
+    "name": "Femcegen",
     "population": 168523,
     "area": 3268,
     "density": "51.57"
@@ -3888,7 +3888,7 @@ const regionData = {
       "y": 1609
     },
     "archla": "Austrene",
-    "name": "Not Assigned",
+    "name": "Logen",
     "population": 117203,
     "area": 5204,
     "density": "22.52"
@@ -4284,7 +4284,7 @@ const regionData = {
       "y": 1752
     },
     "archla": "Terminar",
-    "name": "Not Assigned",
+    "name": "Gochteen",
     "population": 144306,
     "area": 3090,
     "density": "46.70"
@@ -4449,7 +4449,7 @@ const regionData = {
       "y": 1983
     },
     "archla": "Neterine",
-    "name": "Not Assigned",
+    "name": "Motusex",
     "population": 121907,
     "area": 3039,
     "density": "40.11"
@@ -4713,7 +4713,7 @@ const regionData = {
       "y": 510
     },
     "archla": "Fregen",
-    "name": "Not Assigned",
+    "name": "Stradlex",
     "population": 61682,
     "area": 2061,
     "density": "29.93"
@@ -4779,7 +4779,7 @@ const regionData = {
       "y": 463
     },
     "archla": "Fregen",
-    "name": "Not Assigned",
+    "name": "Cosex",
     "population": 33955,
     "area": 2923,
     "density": "11.62"
@@ -4988,7 +4988,7 @@ const regionData = {
       "y": 1723
     },
     "archla": "Creepeat",
-    "name": "Not Assigned",
+    "name": "Machsex",
     "population": 128878,
     "area": 3422,
     "density": "37.66"
@@ -5461,7 +5461,7 @@ const regionData = {
       "y": 2016
     },
     "archla": "Felzet",
-    "name": "Not Assigned",
+    "name": "Lovesex",
     "population": 111796,
     "area": 5624,
     "density": "19.88"
@@ -5901,7 +5901,7 @@ const regionData = {
       "y": 2251
     },
     "archla": "Lateni",
-    "name": "Not Assigned",
+    "name": "Flosex",
     "population": 126264,
     "area": 2958,
     "density": "42.69"

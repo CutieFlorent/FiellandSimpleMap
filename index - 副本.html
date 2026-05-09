@@ -369,7 +369,7 @@
         );
       }
 
-      function showArchlaInfo(regionId) {
+      function showStateInfo(regionId) {
         const data = regionData[regionId];
         if (!data) return;
         const archla_data = archlaData[data.archla];
@@ -410,13 +410,13 @@
 
         function handlePath(path, isHover) {
           const id = path.id;
-          const archla = regionData[id].archla;
+          const state = regionData[id].archla;
           if (isHover) {
             currentRegion = id;
             showRegionInfo(id);
-            showArchlaInfo(id);
+            showStateInfo(id);
           }
-          svg.querySelectorAll(`path[id="${archla}"]`).forEach((p) => {
+          svg.querySelectorAll(`path[id="${state}"]`).forEach((p) => {
             p.style.stroke = isHover
               ? "#002040"
               : p.dataset.origStroke || "none";
@@ -430,7 +430,7 @@
           });
           svg.querySelectorAll(`path[id="${id}"]`).forEach((p) => {
             if (isHover) {
-              p.style.filter = "brightness(0.5)"; // 提高亮度 0.5 倍
+              p.style.filter = "brightness(0.5)"; // 提高亮度 1.5 倍
             } else {
               p.style.filter = ""; // 恢复原始
             }
